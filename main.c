@@ -21,7 +21,7 @@ typedef struct
 
 // 寻找结点中的最小值和次小值
 void select(Node tree[], int *p1, int *p2) {
-    // 找到最小值
+    // 初设最小值
     int min = 0;
     for (int i = 0; i < m; i++) {
         if (tree[i].parent == 0 && tree[i].weight != 0) {   // 不能为已经合并值，不能为权值为0的值
@@ -30,6 +30,7 @@ void select(Node tree[], int *p1, int *p2) {
             break;
         }
     }
+    // 找到最小值
     for (int i = 1; i < m; i++) {
         if (tree[i].weight != 0 && tree[i].weight < min && tree[i].parent == 0) {
             min = tree[i].weight;
@@ -37,7 +38,7 @@ void select(Node tree[], int *p1, int *p2) {
         }
     }
 
-    // 找到次小值
+    // 初设次小值
     for (int i = 0; i < m; i++) {
         if (i != *p1 && tree[i].parent == 0 && tree[i].weight != 0) {   // 此初始值不能为最小值，不能为已经合并值，不能为权值为0的值
             min = tree[i].weight;   
@@ -45,6 +46,7 @@ void select(Node tree[], int *p1, int *p2) {
             break;
         }
     }
+    // 找到次小值
     for (int i = 1; i < m; i++) {
         if (tree[i].weight != 0 && tree[i].weight <= min && i != *p1 && tree[i].parent == 0) {
             min = tree[i].weight;
